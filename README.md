@@ -1,82 +1,182 @@
-# ⚠️ 
+#  🛠 FAQ & Troubleshoot 🛠
 
----
-
-### **Cause of the Issue**
-- The error likely arises due to an **old GPU** or **low RAM** on the device.
-- The solution involves adjusting environment variables and configuration files to optimize resource usage.
-
----
-
-### **Steps to Fix the Issue**
-
-#### **1. Stop the Node**
-- Use `Ctrl + C` in the terminal to stop the running node.
-
----
-
-#### **2. Modify `.bashrc` File**
-This step adjusts an environment variable to manage GPU memory usage.
-
-1. Open the `.bashrc` file:
-   ```bash
-   nano ~/.bashrc
-   ```
-   - If `.bashrc` does not exist, create it by running `touch ~/.bashrc` before opening it.
-
-2. Add the following line at the end of the file:
-   ```bash
-   export PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0
-   ```
-
-3. Save and exit:
-   - Press `Ctrl + X`, then `Y`, and hit `Enter`.
-
-4. Reload the `.bashrc` file to apply changes:
-   ```bash
-   source ~/.bashrc
-   ```
-
----
-
-#### **3. Edit the Configuration File**
-Adjust GPU memory utilization in the YAML configuration file.
-
-- For **WSL/Linux**:
-  ```bash
-  nano ~/rl-swarm/hivemind_exp/configs/gpu/grpo-qwen-2.5-0.5b-deepseek-r1.yaml
-  ```
-
-- For **Mac**:
-  ```bash
-  nano ~/rl-swarm/hivemind_exp/configs/mac/grpo-qwen-2.5-0.5b-deepseek-r1.yaml
-  ```
-
-1. Locate this line in the file:
-   ```yaml
-   vllm_gpu_memory_utilization: 0.2
-   ```
-
-2. Change its value to `0.4`:
-   ```yaml
-   vllm_gpu_memory_utilization: 0.4
-   ```
-   ![image](https://github.com/user-attachments/assets/59c40535-1231-4c4a-a8b3-393e0c975032)
+</div>
 
 
-3. Save and exit:
-   - Press `Ctrl + X`, then `Y`, and hit `Enter`.
+# 1️⃣ How to Login or access  http://localhost:3000/ in VPS? 📶
 
----
+* Open a new Terminal and login ur vps 
 
-#### **4. Restart Terminal and Node**
-- Close your terminal or WSL session.
-- Reopen it and restart your node application.
+* Allow Incoming connection on VPS
 
----
+```
+sudo apt install ufw -y
+sudo ufw allow 3000/tcp
+```
 
-### **Why These Changes Work**
-1. Setting `PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0` disables upper limits for GPU memory allocation, preventing out-of-memory errors but with some risk of system instability.
-2. Increasing `vllm_gpu_memory_utilization` from `0.2` to `0.4` allows better utilization of available GPU memory while staying within safe limits.
+* Enable ufw
 
-These adjustments optimize resource usage for devices with limited hardware capabilities, resolving errors effectively!
+```
+sudo ufw enable
+```
+
+* Install cloudflared on the VPS
+
+```
+wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
+````
+
+```
+sudo dpkg -i cloudflared-linux-amd64.deb
+```
+
+* Check version
+
+```
+cloudflared --version
+```
+
+* Make sure your Node is running on port 3000 in Previous Screen
+
+* Run the tunnel command
+
+```
+cloudflared tunnel --url http://localhost:3000
+```
+
+* Access the Link from your local machine
+
+    
+    ![image](https://github.com/user-attachments/assets/c5bdfec5-123d-4625-8da8-f46269700950)
+
+* Now follow Login!
+ 
+* Done!✅
+
+
+
+# 2️⃣ Solution of OOM errors on MacBook (Memory/Cpu limit)
+
+* Open -
+ ```
+nano ~/.zshrc
+```
+
+* Paste in the file
+
+```
+export PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0
+export PYTORCH_ENABLE_MPS_FALLBACK=1
+```
+* Reload with
+
+```
+  source ~/.zshrc
+```
+
+# 3️⃣ How to get the Node Name?
+
+* Check the image below to get your Node id!
+
+![image](https://github.com/user-attachments/assets/728c6401-75c8-43b4-973c-e9d515c4b453)
+
+# 4️⃣ Save your `swarm.pem` file (for future login)
+
+* open a wsl window 
+
+* If U have to copy this file to your local machine from VPS then Run this command from your local Terminal--
+
+```
+scp USERNAME@YOUR_IP:~/rl-swarm/swarm.pem ~/swarm.pem
+```
+
+It will save here in ur Terminal's Root Directory!
+
+
+# 5️⃣ How To start the Next Day (Local Pc)
+
+*
+ ```
+  cd rl-swarm
+ ```
+
+*
+ ```
+  python3 -m venv .venv
+```
+
+*
+```
+source .venv/bin/activate
+```
+
+*
+```
+./run_rl_swarm.sh
+```
+
+
+# 6️⃣ Node Stuck & getting errors like this? lets solve it! 
+
+![image](https://github.com/user-attachments/assets/956c0691-b2da-40f1-825e-cd634c147d49)
+
+* This error is coming for who's running on personal Device.
+
+* Cause of error is old GPU or Low ram!
+
+1) Stop your node with ctrl+c
+
+2) Run `cd`
+
+3) Open and Add this line at the end of the file (use up-down keys to move)
+
+```
+nano ~/.bashrc
+```
+
+```
+export PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0
+```
+
+4) Reload with-
+
+```
+source ~/.bashrc
+```
+
+5) Open The Config file
+
+For wsl/linux
+
+```
+nano ~/rl-swarm/hivemind_exp/configs/gpu/grpo-qwen-2.5-0.5b-deepseek-r1.yaml
+```
+
+For Mac
+
+```
+nano ~/rl-swarm/hivemind_exp/configs/mac/grpo-qwen-2.5-0.5b-deepseek-r1.yaml
+```
+
+🔺 Now Change- `vllm_gpu_memory_utilization: 0.2` to `0.4`  (check ss)
+
+![image](https://github.com/user-attachments/assets/2d40c0dc-0438-4d80-85e4-c9fcfbbc58fc)
+
+
+save with `cltr+x` , `Y` + `Enter`
+
+6) Cut the Wsl or terminal and restart it!
+
+7) Now start the node ( Check FAQ 5)
+
+* It can be solve your issue, i think not for low GPU users!
+
+Follow official Docs for more info and Errors!
+
+https://github.com/gensyn-ai/rl-swarm/tree/brian-address-cpu-only-crashes?tab=readme-ov-file#troubleshooting
+
+👉 Join TG for more Updates: https://telegram.me/cryptogg
+
+If U have any issue then open a issue on this repo or Dm me on TG~
+
+Thank U! 👨🏻‍💻 Happy Coding💗
