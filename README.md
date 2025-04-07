@@ -1,4 +1,5 @@
 The provided instructions aim to resolve a GPU or memory-related issue encountered when running a node on a personal device. Here's a step-by-step guide to implement the fix:
+![image](https://github.com/user-attachments/assets/0f2ba3ae-31a2-444a-a3d8-217d4b5d66d1)
 
 ---
 
@@ -61,6 +62,8 @@ Adjust GPU memory utilization in the YAML configuration file.
    ```yaml
    vllm_gpu_memory_utilization: 0.4
    ```
+   ![image](https://github.com/user-attachments/assets/59c40535-1231-4c4a-a8b3-393e0c975032)
+
 
 3. Save and exit:
    - Press `Ctrl + X`, then `Y`, and hit `Enter`.
