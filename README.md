@@ -1,5 +1,4 @@
 The provided instructions aim to resolve a GPU or memory-related issue encountered when running a node on a personal device. Here's a step-by-step guide to implement the fix:
-![image](https://github.com/user-attachments/assets/0f2ba3ae-31a2-444a-a3d8-217d4b5d66d1)
 
 ---
 
