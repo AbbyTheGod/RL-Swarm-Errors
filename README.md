@@ -207,7 +207,7 @@ nano hivemind_exp/configs/mac/grpo-qwen-2.5-0.5b-deepseek-r1.yaml
 
 
 
-# **Fixing DHTNode Bootstrap Failure in Gensyn Testnet**
+# ### ⚠️ Fixing DHTNode Bootstrap Failure in Gensyn Testnet
 
 If you're encountering the following error while running the Gensyn testnet:
 
