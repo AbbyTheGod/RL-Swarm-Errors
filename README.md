@@ -233,7 +233,10 @@ Follow these steps to resolve the issue by modifying the `testnet_grpo_runner.py
 
 3. Replace it with the following line:
    ```python
-   dht = hivemind.DHT(start=True, ensure_bootstrap_success=False, self._dht_kwargs(grpo_args))
+   <@889056040883200010> <@838403789782122517> bro Issue resolved
+correct the argument to this
+
+`dht = hivemind.DHT(start=True, ensure_bootstrap_success=False, **self._dht_kwargs(grpo_args))`
    ```
 
 4. Save and close the file:
