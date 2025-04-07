@@ -171,10 +171,6 @@ save with `cltr+x` , `Y` + `Enter`
 
 * It can be solve your issue, i think not for low GPU users!
 
-* ⚠️ If receiving `EVM Wallet: 0x0000000000000000000000000000000000000000`, your `onchain-participation` is not being tracked and you have to Install with `New Email` and ***Delete old `swarm.pem`***
-
-![image](https://github.com/user-attachments/assets/8852d3b3-cb13-473e-863f-f4cbe3d0abdd)
-
 ---
 # Troubleshooting:
 
