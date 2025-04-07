@@ -76,7 +76,7 @@ Adjust GPU memory utilization in the YAML configuration file.
 ---
 
 ### **Why These Changes Work**
-1. Setting `PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0` disables upper limits for GPU memory allocation, preventing out-of-memory errors but with some risk of system instability[4][8][11].
-2. Increasing `vllm_gpu_memory_utilization` from `0.2` to `0.4` allows better utilization of available GPU memory while staying within safe limits[6][10].
+1. Setting `PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0` disables upper limits for GPU memory allocation, preventing out-of-memory errors but with some risk of system instability.
+2. Increasing `vllm_gpu_memory_utilization` from `0.2` to `0.4` allows better utilization of available GPU memory while staying within safe limits.
 
 These adjustments optimize resource usage for devices with limited hardware capabilities, resolving errors effectively!
