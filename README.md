@@ -171,6 +171,43 @@ save with `cltr+x` , `Y` + `Enter`
 
 * It can be solve your issue, i think not for low GPU users!
 
+* ⚠️ If receiving `EVM Wallet: 0x0000000000000000000000000000000000000000`, your `onchain-participation` is not being tracked and you have to Install with `New Email` and ***Delete old `swarm.pem`***
+
+![image](https://github.com/user-attachments/assets/8852d3b3-cb13-473e-863f-f4cbe3d0abdd)
+
+---
+# Troubleshooting:
+
+### ⚠️ Upgrade viem & Node version in Login Page
+1- Modify: `package.json`
+```bash
+cd rl-swarm
+nano modal-login/package.json
+```
+* Update: `"viem":` to `"2.25.0"`
+
+2- Upgrade
+```bash
+cd rl-swarm
+cd modal-login
+yarn install
+
+yarn upgrade && yarn add next@latest && yarn add viem@latest
+
+cd ..
+```
+
+### ⚠️ CPU-only Users: Ran out of input
+Navigate:
+```
+cd rl-swarm
+```
+Edit:
+```
+nano hivemind_exp/configs/mac/grpo-qwen-2.5-0.5b-deepseek-r1.yaml
+```
+* Lower `max_steps` to `5`
+
 Follow official Docs for more info and Errors!
 
 https://github.com/gensyn-ai/rl-swarm/tree/brian-address-cpu-only-crashes?tab=readme-ov-file#troubleshooting
