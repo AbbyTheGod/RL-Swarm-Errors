@@ -205,11 +205,4 @@ nano hivemind_exp/configs/mac/grpo-qwen-2.5-0.5b-deepseek-r1.yaml
 * Lower `max_steps` to `5`
 
 Follow official Docs for more info and Errors!
-
-https://github.com/gensyn-ai/rl-swarm/tree/brian-address-cpu-only-crashes?tab=readme-ov-file#troubleshooting
-
-👉 Join TG for more Updates: https://telegram.me/cryptogg
-
-If U have any issue then open a issue on this repo or Dm me on TG~
-
 Thank U! 👨🏻‍💻 Happy Coding💗
