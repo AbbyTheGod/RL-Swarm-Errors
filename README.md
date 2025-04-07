@@ -175,7 +175,6 @@ save with `cltr+x` , `Y` + `Enter`
 # Troubleshooting:
 
 ### ⚠️ Upgrade viem & Node version in Login Page
-![image](https://github.com/user-attachments/assets/89641e84-0c9b-4211-9eaf-da1430dd86b9)
 
 1- Modify: `package.json`
 ```bash
