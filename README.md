@@ -205,5 +205,44 @@ nano hivemind_exp/configs/mac/grpo-qwen-2.5-0.5b-deepseek-r1.yaml
 ```
 * Lower `max_steps` to `5`
 
+
+
+# **Fixing DHTNode Bootstrap Failure in Gensyn Testnet**
+
+If you're encountering the following error while running the Gensyn testnet:
+
+```
+RuntimeError: DHTNode bootstrap failed: none of the initial_peers responded to a ping. (set ensure_bootstrap_success=False to ignore)
+```
+
+Follow these steps to resolve the issue by modifying the `testnet_grpo_runner.py` file.
+
+---
+
+## **Steps to Fix**
+
+1. Open the `testnet_grpo_runner.py` file for editing:
+   ```bash
+   nano hivemind_exp/runner/gensyn/testnet_grpo_runner.py
+   ```
+
+2. Locate the following line in the file:
+   ```python
+   dht = hivemind.DHT(start=True, self._dht_kwargs(grpo_args))
+   ```
+
+3. Replace it with the following line:
+   ```python
+   dht = hivemind.DHT(start=True, ensure_bootstrap_success=False, self._dht_kwargs(grpo_args))
+   ```
+
+4. Save and close the file:
+   - Press `CTRL + O` to save.
+   - Press `CTRL + X` to exit.
+
+5. Restart your testnet process to apply the changes.
+
+---
+
 Follow official Docs for more info and Errors!
 Thank U! 👨🏻‍💻 Happy Coding💗
